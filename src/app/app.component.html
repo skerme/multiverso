@@ -1,0 +1,1140 @@
+
+
+
+<div class="row conteiner-overflow conteiner-overflow-celular">
+  <div class="container " style="background: rgb(52, 87, 228);">
+
+    <!-- //////////NOVO MENU/// -->
+    <nav class="navbar navbar-expand-lg navbar-dark   bg-primary">
+      <div class="container-fluid ">
+        <!-- <a class="navbar-brand" href="#">MENU</a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav" >
+          <ul class="navbar-nav"  >
+
+             <li  class="nav-item ">
+              <a  class="nav-link active" aria-current="page" (click)="menunovo(0)" data-bs-toggle="collapse">MADSON</a>
+            </li>
+
+
+            <li class="nav-item ">
+              <a  class="nav-link active computador_teste4" (click)="menunovo(1)"  >LAVAJATO</a>
+            </li>
+
+            <li class="nav-item ">
+              <a  class="nav-link active computador_teste4" (click)="menunovo(2)"  >LOCALHOST</a>
+            </li>
+
+            <li class="nav-item ">
+              <a  class="nav-link active computador_teste4" (click)="menunovo(3)"  >MODAS</a>
+            </li>
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- //////////NOVO MENU/// -->
+  </div>
+  </div>
+
+
+
+
+
+  <div class=" table-overflow    tamanho_texto_desktop" style=" font-weight: bold;">
+    <table
+      class="table table-dark table-bordered table-striped cel_tabela text-center"
+    >
+      <thead>
+        <tr>
+
+
+
+          <th scope="col" style="text-align: left;">EMPRESA:{{empresa}}<br><BR>NAVEGAÇÃO:{{this.quantidadeDeAcessos}}<br><BR>LOCAL:{{ultimoacesso[0].descricao}}</th>
+
+          <th scope="col" style="text-align: left; " > MENU:{{ultimoacesso[0].perfil }}<BR><BR> {{ultimoacesso[0].data | date:'dd/MM/yyyy HH:mm'}} <BR><BR> DIAS ABERTO:{{  getDiasFuncionando}}</th>
+
+        </tr>
+      </thead>
+
+    </table>
+  </div>
+
+
+
+  <!-- ////////////////////////////-->
+
+
+  <div class="row conteiner-overflow conteiner-overflow-celular">
+    <div class="container " style="background: rgb(52, 87, 228);">
+
+
+    <!-- <p class="alert alert-primary" role="alert"   style="background: rgb(55, 55, 55);  font-size: 15px;  text-align: center; font-weight: bold; color: cornsilk; margin-bottom: 0px;">
+      1.GESTÃO({{empresa}})({{this.quantidadeDeAcessos}})<BR>
+      2.LOCALIZAÇÃO:{{ultimoacesso[0].descricao}}<br>
+      3.DATA/HORA:{{ultimoacesso[0].data | date:'dd/MM/yyyy HH:mm'}}
+     </p>
+   -->
+
+
+
+
+
+
+
+
+
+  <!-- ///////////////////eScolhe PERIODO////////////////////////////////////// -->
+  <div style=" font-size: 18px; font-weight: bold; text-align: center; color: black;   background: rgb(55, 55, 55);">
+
+      <div style="text-align: center; "  >
+        <input style="text-align: center; font-size: 15px; font-weight: bold;"  class="form-control" #drp="bsDaterangepicker" bsDaterangepicker [(ngModel)]="bsRangeValue"  [bsConfig]="{ rangeInputFormat : 'DD-MM-YYYY', dateInputFormat: 'DD-MM-YYYY', showWeekNumbers: true }" >
+      </div>
+
+    <button style="text-align: center;font-size: 15px; font-weight: bold;" class="btn btn-dark " type="Submit" (click)="this.ngOnInit()"  > PESQUISAR</button> <br>
+   <!-- <button style="text-align: center; font-size: 25px; font-weight: bold;" tyle="text-align: center;" type="button"  class="btn btn-dark"   (click)="prevStep()">   <<--ANTERIOR</button>
+
+  <button type="button" style="font-size: 25px; font-weight: bold;" class="btn btn-dark"   (click)="nextStep()" >  PROXIMO</button> -->
+
+  </div>
+  <!-- ///////////////////eScolhe PERIODO////////////////////////////////////// -->
+
+
+
+
+
+  <mat-accordion>
+
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)"  hideToggle>
+
+
+
+  <mat-expansion-panel-header class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary" style="margin-top: 5px;   background: rgb(109, 0, 199);   font-weight: bold; font-style: italic;"   >
+
+    <!-- style="margin-top: 5px;   background: rgb(109, 0, 199); font-size: 30px;   padding-left: 1100px; font-weight: bold; font-style: italic;" -->
+     <mat-panel-title >
+      RESULTADO
+
+    </mat-panel-title>
+    <!-- <mat-panel-description  >
+      RESULTADO
+    </mat-panel-description> -->
+  </mat-expansion-panel-header>
+  <button type="button" class="btn btn-primary"   (click)="ATUALIZAR(0)" >ATUALIZAR</button>
+
+
+  <div style="font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(0, 230, 11); margin-bottom: 6px; "  class=" tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+    CAIXA+RECEITA LÍQUIDA: {{ valorAberturaCaixa+this.valorRCB | currency : 'BRL'  }}
+    <!-- (PERCENTUAL DE GANHO: {{(this.valorRCB-this.valorCMV)/this.valorRCB  | percent:'2.2-2'}}) -->
+  </div>
+
+
+      <mat-card-content>
+        <div style=" height: 45px; text-align:initial; font-weight: bold; background-color: rgb(35, 38, 41); color: cornsilk; margin-bottom: 6px;"  class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary" role="alert">
+
+          (+)RECEITA BRUTA:{{this.valorRCB +this.desconto | currency : 'BRL'}}
+        </div>
+
+        <div style="height: 45px;  font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+          (-)DESCONTOS:  {{ this.desconto | currency : 'BRL'}}
+        </div>
+
+        <div style=" height: 45px;  font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(0, 230, 11); margin-bottom: 6px;"  class=" tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+          (+)RECEITA LÍQUIDA: {{this.valorRCB  | currency : 'BRL'}}
+
+          <!-- (PERCENTUAL DE GANHO: {{(this.valorRCB-this.valorCMV)/this.valorRCB  | percent:'2.2-2'}}) -->
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div style=" height: 45px;  font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class=" tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+          (-)CUSTO: {{this.valorCMV | currency : 'BRL'}}
+        </div>
+
+
+        <div style="height: 45px;   font-weight: bold; background-color: rgb(35, 38, 41); color: cornsilk; margin-bottom: 6px;" class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+          (=)LUCRO BRUTO: {{this.valorRCB  -this.valorCMV | currency : 'BRL'}}
+        </div>
+
+        <div style="height: 45px;  font-weight: bold; background-color: rgb(35, 38, 41); color: cornsilk; margin-bottom: 6px;" class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+          (-)DESPESAS : {{this.valorDESPESA | currency : 'BRL' }}
+        </div>
+
+
+
+
+
+        <div *ngIf="this.valorRCB -this.valorCMV-this.valorDESPESA>=0"  style="height: 45px;  font-weight: bold; background-color: rgb(25, 0, 255);color: rgb(255, 255, 255); margin-bottom: 6px;" class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+          (=)RESULTADO:{{this.valorRCB -this.valorCMV-this.valorDESPESA | currency : 'BRL'}}
+        </div>
+        <div *ngIf="this.valorRCB -this.valorCMV-this.valorDESPESA<0"  style="height: 45px;  font-weight: bold; background-color: rgb(255, 0, 0);color: rgb(255, 255, 255);  margin-bottom: 6px;" class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+          (=)RESULTADO:{{this.valorRCB -this.valorCMV-this.valorDESPESA | currency : 'BRL'}}
+        </div>
+
+        <div style="text-align: center;  font-weight: bold; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+
+          ITENS VENDIDOS: {{this.quantidadeDeItensVendidosPeriodo }}
+           </div>
+
+           <div style="text-align: center;  font-weight: bold; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+
+            MARGEM DE LUCRO:{{(this.valorRCB  -this.valorCMV)/this.valorRCB | percent:'1.0-2'}}
+             </div>
+
+             <div style="text-align: center;  font-weight: bold; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+
+              VENDA MÉDIA:{{ this.valorRCB /getDiasFuncionando|  currency : 'BRL'}}
+               </div>
+
+
+
+
+      </mat-card-content>
+
+  </mat-expansion-panel>
+
+
+
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+  <mat-expansion-panel-header  class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary"  style=" background: rgb(9, 235, 118);   font-weight: bolder;   font-style: italic;"  >
+    <mat-panel-title  style="margin-top: 10px; margin-bottom: 10px;">
+      FORMAS DE PAGAMENTO
+    </mat-panel-title>
+
+  </mat-expansion-panel-header>
+  <button type="button" class="btn btn-primary"   (click)="ATUALIZAR(1)" >ATUALIZAR</button>
+
+  <!-- <div style="text-align: center;">
+
+    <mat-form-field appearance="fill">
+      <mat-label>PERÍODO</mat-label>
+      <mat-date-range-input [formGroup]="formaPagamento" [rangePicker]="picker2">
+        <input matStartDate formControlName="start" placeholder="Start date">
+        <input matEndDate formControlName="end" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker2></mat-date-range-picker>
+
+    <!-- //  <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error> -->
+    <!-- //  <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+
+
+
+    <button style="text-align: center;" class="btn btn-dark " type="Submit" (click)="listarFormaPagamentoTotal()"  > PESQUISAR</button>
+
+  </div>
+  -->
+
+
+
+
+
+  <div class=" table-overflow    tamanho_texto_celular tamanho_texto_desktop" style=" font-weight: bold;">
+    <table
+      class="table table-dark table-bordered table-striped  text-center"
+    >
+      <thead>
+        <tr>
+          <th scope="col">NOME</th>
+          <th scope="col">VALOR</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+        <tr *ngFor="let cliente of this.vendaPorForma">
+          <td>PIX</td>
+          <td>{{ cliente.pix | currency : 'BRL'}}</td><br>
+        </tr>
+
+
+        <tr *ngFor="let cliente of this.vendaPorForma">
+          <td>DINHEIRO</td>
+          <td>{{ cliente.dinheiro | currency : 'BRL'}}</td><br>
+        </tr>
+
+        <tr *ngFor="let cliente of this.vendaPorForma">
+          <td>DÉBITO</td>
+          <td>{{ cliente.debito | currency : 'BRL'}}</td><br>
+        </tr>
+
+        <tr *ngFor="let cliente of this.vendaPorForma">
+          <td>CRÉDITO</td>
+          <td>{{ cliente.credito | currency : 'BRL'}}</td><br>
+        </tr>
+
+
+        <tr *ngFor="let cliente of this.vendaPorForma">
+          <td>TOTAL</td>
+          <td>{{ cliente.pix+cliente.dinheiro +cliente.debito+cliente.credito| currency : 'BRL' }}</td><br>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </mat-expansion-panel>
+
+
+
+
+
+
+  <mat-expansion-panel  [expanded]="step === 2" (opened)="setStep(2)"  hideToggle>
+  <mat-expansion-panel-header class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary"  style="background: rgb(34, 14, 218);     font-weight: bolder;  font-weight: bolder; font-style: italic;" >
+    <mat-panel-title style="margin-top: 10px; margin-bottom: 10px;"> VENDEDORES </mat-panel-title>
+  </mat-expansion-panel-header>
+  <button type="button" class="btn btn-primary"   (click)="ATUALIZAR(2)" >ATUALIZAR</button>
+
+
+  <!-- <div style="text-align: center;">
+
+  <mat-form-field appearance="fill">
+    <mat-label>PERÍODO</mat-label>
+    <mat-date-range-input [formGroup]=" vendedor " [rangePicker]="picker3">
+      <input matStartDate formControlName="start" placeholder="Start date"  >
+      <input matEndDate formControlName="end" placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker3></mat-date-range-picker>
+
+  <!-- //  <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error> -->
+  <!-- //  <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+  </mat-form-field>
+
+  <!-- <p>Selected range: {{vendedor .value | json}}</p>
+
+  <button style="text-align: center;" class="btn btn-dark " type="Submit" (click)="listarVendedorTotal()"  > PESQUISAR</button>
+
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class=" table-overflow tamanho_texto_celular tamanho_texto_desktop" style=" font-weight: bold;">
+    <table
+      class="table table-dark table-bordered table-striped text-center  "
+    >
+      <thead>
+        <tr>
+          <th scope="col">NOME</th>
+          <th scope="col">VALOR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of this.vendaPorVendedor">
+          <td>{{ item._id.vendedor |uppercase }}</td>
+          <td>{{ item.count | currency : 'BRL' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </mat-expansion-panel>
+
+
+
+  <mat-expansion-panel  [expanded]="step === 4" (opened)="setStep(4)"  hideToggle   >
+    <mat-expansion-panel-header  class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary"  style=" background: rgb(221, 0, 0);  font-weight: bolder;  font-weight: bolder; font-style: italic;" >
+       <mat-panel-title style="margin-top: 10px; margin-bottom: 10px;">
+        DESPESAS
+      </mat-panel-title>
+      <!-- <mat-panel-description style="margin-top: 5px;   font-weight: bolder;  font-weight: bolder; font-style: italic;">
+        VENDA DE PRODUTOS NO PERÍODO
+      </mat-panel-description> -->
+
+
+
+</mat-expansion-panel-header>
+<button type="button" class="btn btn-primary"   (click)="ATUALIZAR(4)" >ATUALIZAR</button>
+
+
+
+<div class="table-overflow2" style="font-size: 30px; font-weight: bold;">
+  <table
+    class="table table-dark table-bordered table-striped   text-center"
+  >
+    <thead>
+      <tr>
+        <th scope="col">DATA</th>
+        <th scope="col"> DESCRIÇÃO</th>
+         <th scope="col">VALOR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of this.listaDespesas">
+        <td>{{item.data | date:'dd/MM/yyyy HH:mm'}}</td>
+        <td>{{ item.descricao | uppercase }}</td>
+        <td>{{ item.valor}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+</mat-expansion-panel>
+
+
+
+
+
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////// -->
+<mat-expansion-panel  [expanded]="step === 8" (opened)="setStep(8)"  hideToggle   >
+  <mat-expansion-panel-header  class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary"  style=" background: rgb(102, 138, 5);  font-weight: bolder;  font-weight: bolder; font-style: italic;" >
+     <mat-panel-title style="margin-top: 10px;margin-bottom: 10px;">
+      ESTATÍSTICAS DA VENDA
+    </mat-panel-title>
+</mat-expansion-panel-header>
+<button type="button" class="btn btn-primary"   (click)="ATUALIZAR(8)" >ATUALIZAR</button>
+
+<mat-card-content>
+
+
+  <div style=" font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    ITENS_VENDIDOS_ATACADO: {{this.QuantidadeVendidaItensAtacadoVarejo[0]}} ({{this.QuantidadeVendidaItensAtacadoVarejo[0]/this.quantidadeDeItensVendidosPeriodo | percent:'1.0-2'}})
+
+  </div>
+
+  <div style="font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    ITENS_VENDIDOS_VAREJO: {{this.QuantidadeVendidaItensAtacadoVarejo[1]}} ({{this.QuantidadeVendidaItensAtacadoVarejo[1]/this.quantidadeDeItensVendidosPeriodo | percent:'1.0-2'}})
+
+  </div>
+
+
+  <div style="font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    TOTAL_ITENS_VENDIDOS: {{this.quantidadeDeItensVendidosPeriodo }}
+  </div>
+
+  <div style="font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    TOTAL_VENDAS:  {{this.QuantidadeVendidaItensAtacadoVarejo[2]}}
+  </div>
+
+
+
+  <div style="font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    LUCRO_ATACADO:  {{this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3] | currency : 'BRL'}}
+    ({{ (this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3])/( (this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3]) +this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5]) | percent:'1.0-2'}})
+  </div>
+
+
+
+
+  <div style="font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    LUCRO_VAREJO:  {{this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5] | currency : 'BRL'}}
+    ({{ (this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5])/( (this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3]) +this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5]) | percent:'1.0-2'}})
+  </div>
+
+
+  <div style="font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    LUCRO_TOTAL:  {{this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3] +this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5] | currency : 'BRL'}}
+    </div>
+
+
+
+</mat-card-content>
+
+
+</mat-expansion-panel>
+<!-- /////////////////////////////////////////////////////////////// -->
+
+
+
+
+
+
+
+
+
+
+
+  <mat-expansion-panel  [expanded]="step === 6" (opened)="setStep(6)"  hideToggle    >
+    <mat-expansion-panel-header  class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary"  style=" background: rgb(237, 0, 250);  font-weight: bolder;  font-weight: bolder; font-style: italic;" >
+      <mat-panel-title style="margin-top: 10px; margin-bottom: 10px;">
+      MOVIMENTAÇÕES NO ESTOQUE
+     </mat-panel-title>
+    <!-- <mat-panel-description style="margin-top: 5px;   font-weight: bolder;  font-weight: bolder; font-style: italic;">
+      VENDA DE PRODUTOS NO PERÍODO
+    </mat-panel-description> -->
+
+
+  </mat-expansion-panel-header>
+  <button type="button" class="btn btn-primary"   (click)="ATUALIZAR(6)" >ATUALIZAR</button>
+  <button type="button" class="btn btn-primary"   (click)="ATUALIZA2()" >ATUALIZAR2</button>
+  <button type="button" class="btn btn-success"  style="text-align: center; font-size: 20px;"   > ENTRADA: {{this.TOTALENTRADAESTOQUE| currency : 'BRL'   }}</button>
+  <button type="button" class="btn btn-danger"  style="text-align: center; font-size: 20px;"   > SAÍDA: {{this.valorCMV | currency : 'BRL'}}</button>
+  <button type="button" class="btn btn-secondary"  style="text-align: center; font-size: 20px;"   > SALDO: {{this.TOTALENTRADAESTOQUE-this.valorCMV | currency : 'BRL'}}</button>
+  <button type="button" class="btn btn-primary"  style="text-align: center; font-size: 20px;"   > ATUAL: {{this.totalPrecoCompra | currency : 'BRL'}}</button>
+
+
+  <div>
+  <button type="button" class="btn btn-warning"  style="text-align: center; font-size: 20px;"   > CUSTO DA COMPRA: {{this.CUSTODACOMPRA    | currency : 'BRL'}}</button>
+</div>
+
+
+
+  <div class=" mat-elevation-z8 table-overflow" >
+
+
+    <DIV class="row">
+      <input style="font-size:xx-large;  text-align: center;"  (keyup)="filterData1($event)"  placeholder="Pesquisar">
+      </DIV>
+
+
+        <table mat-table  matSort [dataSource]="this.dataSource1">
+
+
+
+
+               <ng-container matColumnDef="codigo">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> CÓDIGO</th>
+                <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.codigo}} </td>
+              </ng-container>
+
+
+
+              <!-- <ng-container matColumnDef="tamanho">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> TAMANHO</th>
+                <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.tamanho}} </td>
+              </ng-container> -->
+
+              <ng-container matColumnDef="descricao">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;">DESCRIÇÃO  </th>
+                <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.descricao | uppercase}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="inicial">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;">  INI </th>
+                <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.inicial}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="entrada">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> ENT </th>
+                <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.entrada}} </td>
+              </ng-container>
+
+
+
+          <ng-container matColumnDef="quantidade">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> VEN </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.quantidade}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="final">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> FIN </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.final}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="comprar">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> COMPRAR P/ 26 DIAS ÚTEIS</th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.comprar}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="custocompra">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> CUSTO DA COMPRA</th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.custocompra}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="duracao">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> DURAÇÃO </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.duracao | number : '1.0-2'}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="receita">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> RECEITA </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.receita | number : '1.0-2' }} </td>
+          </ng-container>
+
+
+
+          <ng-container matColumnDef="custo">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> CUSTO </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.custo | number : '1.0-2' }} </td>
+          </ng-container>
+
+
+
+          <ng-container matColumnDef="media">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> MÉDIA </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{(element.media)  | number : '1.0-2'  }} </td>
+          </ng-container>
+
+
+
+          <ng-container matColumnDef="ganho">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> GANHO </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.ganho | number : '1.0-2'}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="ganhoPercentual">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> GANHO(%) </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left;  color: rgb(255, 255, 255);  font-weight: bold;  font-size: 30px;"> {{element.ganhoPercentual | number : '1.0-2'}} </td>
+          </ng-container>
+
+
+
+
+
+
+  <!--
+  <!--
+          number : '1.2-2'
+          A minimum of 1 digit will be shown before decimal point
+          It will show at least 2 digits after decimal point
+          But not more than 2 digits -->
+
+
+
+
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns1; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+      </table>
+
+      <mat-paginator #paginator
+      [pageSize]="50" >
+      </mat-paginator>
+
+
+
+      <!-- ANTES ERA ASSIM -->
+
+<!-- <mat-paginator #paginator
+[pageSize]="9"
+[pageSizeOptions]="[10,25,100]"
+>
+</mat-paginator> -->
+
+<!-- ANTES ERA ASSIM -->
+
+
+      </div>
+
+
+
+
+
+  </mat-expansion-panel>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////// -->
+<mat-expansion-panel  [expanded]="step === 5" (opened)="setStep(5)"  hideToggle   >
+  <mat-expansion-panel-header  class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary"  style=" background: rgb(92, 0, 87);  font-weight: bolder;  font-weight: bolder; font-style: italic;" >
+     <mat-panel-title style="margin-top: 10px; margin-bottom: 10px;">
+      NAVEGAÇÃO
+    </mat-panel-title>
+    <!-- <mat-panel-description style="margin-top: 5px;   font-weight: bolder;  font-weight: bolder; font-style: italic;">
+      VENDA DE PRODUTOS NO PERÍODO
+    </mat-panel-description> -->
+
+
+
+</mat-expansion-panel-header>
+<button type="button" class="btn btn-primary"   (click)="ATUALIZAR(5)" >ATUALIZAR</button>
+
+
+
+<div class="table-overflow2" style="font-size: 30px; font-weight: bold;">
+<table
+  class="table table-dark table-bordered table-striped   text-center"
+>
+  <thead>
+    <tr>
+      <th scope="col">DATA</th>
+      <th scope="col">PVA</th>
+      <th scope="col">ITENS</th>
+      <th scope="col">AÇÃO</th>
+      <th scope="col"> LOCALIZAÇÃO</th>
+
+       <th scope="col"> PC</th>
+       <th scope="col"> PVV</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of this.ultimoacesso">
+      <td>{{item.data |  date:'dd/MM/yyyy HH:mm'}}</td>
+      <td>{{ item.pva | currency : 'BRL'}}</td>
+      <td>{{ item.qdtItens }}</td>
+      <td>{{ item.perfil}}</td>
+      <td>{{ item.descricao | uppercase }}</td>
+
+      <td>{{item.pc | currency : 'BRL'}}</td>
+      <td>{{ item.pvv | currency : 'BRL'}}</td>
+
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</mat-expansion-panel>
+<!-- /////////////////////////////////////////////////////////////// -->
+
+
+<mat-expansion-panel  [expanded]="step === 3" (opened)="setStep(3)"  hideToggle   >
+  <mat-expansion-panel-header  class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary"  style=" background: rgb(2, 1, 1);  font-weight: bolder;  font-weight: bolder; font-style: italic;" >
+     <mat-panel-title style="margin-top: 10px; margin-bottom: 10px;">
+      ESTOQUE
+    </mat-panel-title>
+    <!-- <mat-panel-description style="margin-top: 5px;   font-weight: bolder;  font-weight: bolder; font-style: italic;">
+      VENDA DE PRODUTOS NO PERÍODO
+    </mat-panel-description> -->
+
+
+  </mat-expansion-panel-header>
+  <button type="button" class="btn btn-primary"   (click)="ATUALIZAR(3)" >ATUALIZAR</button>
+
+  <mat-card-content>
+
+
+    <div style=" font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      TOTAL PC:  {{this.totalPrecoCompra | currency : 'BRL' }}
+    </div>
+
+    <div style="font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      PV A VAREJO:  {{this.totalPvVarejo | currency : 'BRL'}}
+    </div>
+
+
+    <div style=" font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      PV NO ATACADO: {{this.totalPvAtavado | currency : 'BRL'}}
+    </div>
+
+
+    <div style=" font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+     ITENS: {{this.totalItensEstoque}}
+    </div>
+
+
+
+
+  </mat-card-content>
+
+
+
+
+
+  </mat-expansion-panel>
+
+<mat-expansion-panel  [expanded]="step === 7" (opened)="setStep(7)"  hideToggle    >
+  <mat-expansion-panel-header  class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary"  style=" background: rgb(0, 171, 250);  font-weight: bolder;  font-weight: bolder; font-style: italic;" >
+     <mat-panel-title style="margin-top: 10px; margin-bottom: 10px;">
+     ALTERAÇÕES NO ESTOQUE
+    </mat-panel-title>
+    <!-- <mat-panel-description style="margin-top: 5px;   font-weight: bolder;  font-weight: bolder; font-style: italic;">
+      VENDA DE PRODUTOS NO PERÍODO
+    </mat-panel-description> -->
+
+
+
+</mat-expansion-panel-header>
+<button type="button" class="btn btn-primary"   (click)="ATUALIZAR(7)" >ATUALIZAR</button>
+<div class="table-overflow2" style="font-size: 30px; font-weight: bold;">
+  <table
+    class="table table-dark table-bordered table-striped   text-center"
+  >
+    <thead>
+      <tr>
+        <th scope="col">CÓDIGO</th>
+        <th scope="col">DESCRIÇÃO</th>
+        <th scope="col">PC</th>
+        <th scope="col">PVV</th>
+        <th scope="col">PVA</th>
+        <th scope="col">ALT</th>
+        <th scope="col">U</th>
+        <th scope="col">DATA_ALT </th>
+        <th scope="col">CRIAÇÃO </th>
+
+        <!-- <th scope="col">P</th>
+        <th scope="col">M</th>
+        <th scope="col">G</th>
+        <th scope="col">GG</th>
+        <th scope="col">36</th>
+        <th scope="col">38</th>
+        <th scope="col">40</th>
+        <th scope="col">42</th>
+        <th scope="col">44</th>
+        <th scope="col">46</th>
+        <th scope="col">48</th> -->
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of this.historicoProduto">
+        <td>{{item.codigo}}</td>
+        <td>{{ item.descricao }}</td>
+        <td>{{ item.precoCompra}}</td>
+        <td>{{ item.precoVendaVarejo }}</td>
+        <td>{{ item.precoVendaAtacado }}</td>
+        <td>{{ item.quantAjustada }}</td>
+        <td>{{ item.tamanhos[11].quantidade }}</td>
+        <td>{{ item.dataAlteracao | date:'dd/MM/yyyy HH:mm'}}</td>
+         <td>{{ item.dataCriacao | date:'dd/MM/yyyy HH:mm'}}</td>
+        <!-- <td>{{ item.tamanhos[0].quantidade }}</td>
+        <td>{{ item.tamanhos[1].quantidade }}</td>
+        <td>{{ item.tamanhos[2].quantidade }}</td>
+        <td>{{ item.tamanhos[3].quantidade }}</td>
+        <td>{{ item.tamanhos[4].quantidade }}</td>
+        <td>{{ item.tamanhos[5].quantidade }}</td>
+        <td>{{ item.tamanhos[6].quantidade }}</td>
+        <td>{{ item.tamanhos[7].quantidade }}</td>
+        <td>{{ item.tamanhos[8].quantidade }}</td>
+        <td>{{ item.tamanhos[9].quantidade }}</td>
+        <td>{{ item.tamanhos[10].quantidade }}</td> -->
+
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+</mat-expansion-panel>
+
+
+
+
+<mat-expansion-panel  [expanded]="step === 9" (opened)="setStep(9)"  hideToggle    >
+  <mat-expansion-panel-header  class="tamanho_texto_celular  tamanho_texto_desktop  alert alert-primary"  style=" background: rgb(255, 28, 126);  font-weight: bolder;  font-weight: bolder; font-style: italic;" >
+     <mat-panel-title style="margin-top: 10px; margin-bottom: 10px;">
+     GERAL
+    </mat-panel-title>
+    <!-- <mat-panel-description style="margin-top: 5px;   font-weight: bolder;  font-weight: bolder; font-style: italic;">
+      VENDA DE PRODUTOS NO PERÍODO
+    </mat-panel-description> -->
+
+
+
+</mat-expansion-panel-header>
+<!-- <button type="button" class="btn btn-primary"   (click)="ATUALIZAR(9)" >ATUALIZAR</button> -->
+
+<div style="text-align: left;   font-weight: bold; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+
+  INÍCIO:{{this.bsRangeValue[0] | date:'dd/MM/yyyy'}}-------
+  FIM:{{this.bsRangeValue[1] | date:'dd/MM/yyyy'}}-------
+  DIAS ABERTO:{{  getDiasFuncionando}}
+   </div>
+<mat-card-content>
+
+
+  <div style=" height: 45px;  font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(0, 230, 11); margin-bottom: 6px;"  class=" tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+    (+)RECEITA LÍQUIDA: {{this.valorRCB  | currency : 'BRL'}}
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style=" height: 45px;  font-weight: bold; background-color: rgb(35, 38, 41);color: cornsilk; margin-bottom: 6px;" class=" tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+    (-)CUSTO: {{this.valorCMV | currency : 'BRL'}}
+  </div>
+
+
+  <div style="height: 45px;   font-weight: bold; background-color: rgb(35, 38, 41); color: cornsilk; margin-bottom: 6px;" class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+    (=)LUCRO BRUTO: {{this.valorRCB  -this.valorCMV | currency : 'BRL'}}
+  </div>
+
+  <div style="height: 45px;  font-weight: bold; background-color: rgb(35, 38, 41); color: cornsilk; margin-bottom: 6px;" class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+    (-)DESPESAS : {{this.valorDESPESA | currency : 'BRL' }}
+  </div>
+
+
+
+
+
+  <div *ngIf="this.valorRCB -this.valorCMV-this.valorDESPESA>=0"  style="height: 45px;  font-weight: bold; background-color:rgb(35, 38, 41); color: rgb(255, 255, 255); margin-bottom: 6px;" class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+    (=)RESULTADO:{{this.valorRCB -this.valorCMV-this.valorDESPESA | currency : 'BRL'}}
+  </div>
+  <div *ngIf="this.valorRCB -this.valorCMV-this.valorDESPESA<0"  style="height: 45px;  font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(255, 255, 255);  margin-bottom: 6px;" class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+    (=)RESULTADO:{{this.valorRCB -this.valorCMV-this.valorDESPESA | currency : 'BRL'}}
+  </div>
+
+
+
+     <div style="text-align: left;  font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(255, 255, 255); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+
+      MARGEM DE LUCRO:{{(this.valorRCB  -this.valorCMV)/this.valorRCB | percent:'1.0-2'}}
+       </div>
+
+       <div style="text-align: left;   font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(255, 255, 255); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+
+        VENDA MÉDIA:{{ this.valorRCB /getDiasFuncionando|  currency : 'BRL'}}
+         </div>
+
+
+
+
+
+</mat-card-content>
+
+
+
+<mat-card-content>
+
+
+
+
+  <div *ngFor="let cliente of this.vendaPorForma"  style="text-align: left;   font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(255, 255, 255); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+      PIX: {{ cliente.pix | currency : 'BRL'}}
+  </div>
+
+  <div *ngFor="let cliente of this.vendaPorForma"  style="text-align: left;   font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(255, 255, 255); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+      DINHEIRO:  {{ cliente.dinheiro | currency : 'BRL'}}
+  </div>
+
+  <div  *ngFor="let cliente of this.vendaPorForma" style="text-align: left;   font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(255, 255, 255); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+      DÉBITO: {{ cliente.debito | currency : 'BRL'}}
+  </div>
+
+  <div *ngFor="let cliente of this.vendaPorForma" style="text-align: left;   font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(255, 255, 255); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+      CRÉDITO: {{ cliente.credito | currency : 'BRL'}}
+  </div>
+
+  <!--  <div style="text-align: left;   font-weight: bold; background-color: rgb(35, 38, 41); color: rgb(255, 255, 255); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
+
+
+     <tr *ngFor="let cliente of this.vendaPorForma">
+      <td  style="text-align: left;" >TOTAL:{{ cliente.pix+cliente.dinheiro +cliente.debito+cliente.credito| currency : 'BRL' }}</td>
+
+    </tr>
+  </div>   -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mat-card-content>
+
+
+
+
+
+
+
+<mat-card-content>
+
+
+  <div style=" font-weight: bold; background-color: rgb(16, 97, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    ITENS_VENDIDOS_ATACADO: {{this.QuantidadeVendidaItensAtacadoVarejo[0]}} ({{this.QuantidadeVendidaItensAtacadoVarejo[0]/this.quantidadeDeItensVendidosPeriodo | percent:'1.0-2'}})
+
+  </div>
+
+  <div style="font-weight: bold; background-color: rgb(16, 97, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    ITENS_VENDIDOS_VAREJO: {{this.QuantidadeVendidaItensAtacadoVarejo[1]}} ({{this.QuantidadeVendidaItensAtacadoVarejo[1]/this.quantidadeDeItensVendidosPeriodo | percent:'1.0-2'}})
+
+  </div>
+
+
+  <div style="font-weight: bold; background-color: rgb(16, 97, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    TOTAL_ITENS_VENDIDOS: {{this.quantidadeDeItensVendidosPeriodo }}
+  </div>
+
+  <div style="font-weight: bold; background-color: rgb(16, 97, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    TOTAL_VENDAS:  {{this.QuantidadeVendidaItensAtacadoVarejo[2]}}
+  </div>
+
+
+
+  <div style="font-weight: bold; background-color: rgb(16, 97, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    LUCRO_ATACADO:
+    <!-- {{this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3] | currency : 'BRL'}} -->
+    {{ (this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3])/( (this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3]) +this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5]) | percent:'1.0-2'}}
+  </div>
+
+
+
+
+  <div style="font-weight: bold; background-color: rgb(16, 97, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    LUCRO_VAREJO:
+     <!-- {{this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5] | currency : 'BRL'}} -->
+    {{ (this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5])/( (this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3]) +this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5]) | percent:'1.0-2'}}
+  </div>
+
+
+  <!-- <div style="font-weight: bold; background-color:rgb(16, 97, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+    LUCRO_TOTAL:  {{this.QuantidadeVendidaItensAtacadoVarejo[4]-this.QuantidadeVendidaItensAtacadoVarejo[3] +this.QuantidadeVendidaItensAtacadoVarejo[6]-this.QuantidadeVendidaItensAtacadoVarejo[5] | currency : 'BRL'}}
+    </div> -->
+
+
+    <div style=" font-weight: bold; background-color: rgb(0, 0, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      TOTAL PC:  {{this.totalPrecoCompra | currency : 'BRL' }}
+    </div>
+
+    <div style="font-weight: bold; background-color:  rgb(0, 0, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      PV A VAREJO:  {{this.totalPvVarejo | currency : 'BRL'}}
+    </div>
+
+
+    <div style=" font-weight: bold; background-color: rgb(0, 0, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      PV NO ATACADO: {{this.totalPvAtavado | currency : 'BRL'}}
+    </div>
+
+
+    <div style=" font-weight: bold; background-color:  rgb(0, 0, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+     ITENS: {{this.totalItensEstoque}}
+    </div>
+
+
+
+    <!-- <div style=" font-weight: bold; background-color:  rgb(238, 49, 191);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      1: {{this.valor_predicoes.usuarios.segunda | currency : 'BRL' }}
+     </div>
+
+
+
+     <div style=" font-weight: bold; background-color:  rgb(238, 49, 191);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      2: {{this.valor_predicoes.usuarios.terca | currency : 'BRL' }}
+     </div>
+
+
+     <div style=" font-weight: bold; background-color:  rgb(238, 49, 191);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      3: {{this.valor_predicoes.usuarios.quarta | currency : 'BRL' }}
+     </div>
+
+     <div style=" font-weight: bold; background-color:  rgb(238, 49, 191);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      4: {{this.valor_predicoes.usuarios.quinta | currency : 'BRL' }}
+     </div>
+
+     <div style=" font-weight: bold; background-color:  rgb(238, 49, 191);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      5: {{this.valor_predicoes.usuarios.sexta | currency : 'BRL' }}
+     </div>
+
+     <div style=" font-weight: bold; background-color:  rgb(238, 49, 191);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      6: {{this.valor_predicoes.usuarios.sabado | currency : 'BRL' }}
+     </div>
+
+
+     <div style=" font-weight: bold; background-color: rgb(238, 49, 191);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      ESSEMÊS: {{this.valor_predicoes.usuarios.abril| currency : 'BRL'   }}
+     </div> -->
+
+
+
+     <div style=" font-weight: bold; background-color: rgb(0, 120, 122);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      PONTUAÇÃO: {{((this.totalPvAtavado+this.valorRCB) + (this.valorRCB -this.valorCMV-this.valorDESPESA))/1000 | number : '1.0-2' }}
+     </div>
+
+     <div style=" font-weight: bold; background-color: rgb(0, 0, 0);color: cornsilk; margin-bottom: 6px;" class="alert alert-primary tamanho_texto_celular tamanho_texto_desktop" role="alert">
+      RECORDE: 129,43
+     </div>
+
+
+<!--
+
+    <th scope="col" style="text-align: left;"><BR>PREDICOES:{{this.valor_predicoes.usuarios| json}}</th>
+      <th scope="col" style="text-align: left;"><BR>PREDICOES:{{this.valor_predicoes.usuarios.dia| json}}</th>
+        <th scope="col" style="text-align: left;"><BR>PREDICOES:{{| json}}</th>
+          <th scope="col" style="text-align: left;"><BR>PREDICOES:{{| json}}</th> -->
+
+
+</mat-card-content>
+
+
+
+
+</mat-expansion-panel>
+
+
+
+
+
+
+</mat-accordion>
+
+
+
+
+
+
+
+
+
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <router-outlet></router-outlet>
+
+
+
