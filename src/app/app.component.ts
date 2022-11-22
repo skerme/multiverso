@@ -362,7 +362,7 @@ getDiasFuncionando: number=0
     if (valor==1)          { localStorage.setItem('EMPRESA','https://lavajatodovilarejoapi.herokuapp.com');  this.empresa='LAVAJATO' }
     if (valor==2)          { localStorage.setItem('EMPRESA','http://localhost:3000');  this.empresa='LOCALHOST' }
     if (valor==3)          { localStorage.setItem('EMPRESA','https://modasapi.herokuapp.com');  this.empresa='MODAS' }
-
+    if (valor==4)          { localStorage.setItem('EMPRESA','https://bebidasapih.herokuapp.com');  this.empresa='BEBIDAS' }
 
 
   // PARA O MENU NO CELULAR RECUPAR APOS ESCOLHER A OPCAO  11
