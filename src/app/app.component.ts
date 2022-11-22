@@ -110,11 +110,12 @@ empresa: String=''
     'codigo',
     // 'tamanho',
     'descricao',
+    'quantidade',
     'comprar',
     'custocompra',
      'inicial',
      'entrada',
-    'quantidade',
+
     'final',
 
     'duracao',
