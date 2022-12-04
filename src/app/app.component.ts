@@ -43,6 +43,11 @@ import { timestamp } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+
+
+ TOTALEVENTOSLAVAJATOBEBIDAS1=0
+ TOTALEVENTOSLAVAJATOBEBIDAS2=0
+ TOTALEVENTOSLAVAJATOBEBIDAS3=0
 ////////////////
 
 CUSTODACOMPRA=0
@@ -429,6 +434,25 @@ getDiasFuncionando: number=0
 
 RCB() {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   //ajuste por causa do fuso
 //  this.bsRangeValue[0].setHours(this.bsRangeValue[0].getHours()-1)
 //   this.bsRangeValue[1].setHours(this.bsRangeValue[1].getHours()-2)
@@ -451,6 +475,16 @@ RCB() {
 }
 ).subscribe((valor: any) => {
 // console.log("ffffffffffffffSHELDON", valor)
+
+
+
+
+
+
+
+
+
+
 
 if(valor.length>0){
 
@@ -915,5 +949,112 @@ predicoes(){
 this.estatisticaService.predicoes( {   "dia":2} ).subscribe((itens: any) => { console.log(itens); this.valor_predicoes=itens});
 
 }
+
+
+
+
+
+
+
+
+
+
+TOTAL(){
+
+
+  { localStorage.setItem('EMPRESA','https://lavajatodovilarejoapi.herokuapp.com');  this.empresa='LAVAJATO' }
+  this.gestaoService.listar(
+   {
+
+     //ngx-bootrstrap55555555555/total 6
+   "inicio":  this.bsRangeValue[0],
+   "fim":   this.bsRangeValue[1]
+}
+).subscribe((valor: any) => {
+ this.TOTALEVENTOSLAVAJATOBEBIDAS1=0;
+ this.TOTALEVENTOSLAVAJATOBEBIDAS2=0;
+ this.TOTALEVENTOSLAVAJATOBEBIDAS3=0;
+ if(valor.length>0){
+
+   this.TOTALEVENTOSLAVAJATOBEBIDAS1=this.TOTALEVENTOSLAVAJATOBEBIDAS1+valor[0].RCB;
+
+
+
+// ################################
+
+
+{ localStorage.setItem('EMPRESA','https://eventosapii.herokuapp.com');  this.empresa='EVENTOS' }
+this.gestaoService.listar(
+{
+
+//ngx-bootrstrap55555555555/total 6
+"inicio":  this.bsRangeValue[0],
+"fim":   this.bsRangeValue[1]
+}
+).subscribe((valor: any) => {
+
+if(valor.length>0){
+
+this.TOTALEVENTOSLAVAJATOBEBIDAS2=this.TOTALEVENTOSLAVAJATOBEBIDAS2+valor[0].RCB;
+
+
+
+
+// ####################
+
+
+{ localStorage.setItem('EMPRESA','https://bebidasapih.herokuapp.com');  this.empresa='BEBIDAS' }
+this.gestaoService.listar(
+{
+
+//ngx-bootrstrap55555555555/total 6
+"inicio":  this.bsRangeValue[0],
+"fim":   this.bsRangeValue[1]
+}
+).subscribe((valor: any) => {
+
+if(valor.length>0){
+
+this.TOTALEVENTOSLAVAJATOBEBIDAS3=this.TOTALEVENTOSLAVAJATOBEBIDAS3+valor[0].RCB;
+}
+
+});
+
+
+
+
+// #########################
+
+}
+
+});
+
+
+// ################################
+
+
+
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
 
 }
