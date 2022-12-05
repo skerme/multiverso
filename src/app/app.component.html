@@ -108,7 +108,7 @@
       </div>
 
     <button style="text-align: center;font-size: 15px; font-weight: bold;" class="btn btn-dark " type="Submit" (click)="this.ngOnInit()"  > PESQUISAR</button> <br>
-    <button style="text-align: center;font-size: 15px; font-weight: bold;" class="btn btn-dark " type="Submit" (click)="this.TOTAL()"  > PESQUISAR2</button>
+
    <!-- <button style="text-align: center; font-size: 25px; font-weight: bold;" tyle="text-align: center;" type="button"  class="btn btn-dark"   (click)="prevStep()">   <<--ANTERIOR</button>
 
   <button type="button" style="font-size: 25px; font-weight: bold;" class="btn btn-dark"   (click)="nextStep()" >  PROXIMO</button> -->
@@ -212,7 +212,7 @@
               VENDA MÉDIA:{{ this.valorRCB /getDiasFuncionando|  currency : 'BRL'}}
                </div>
                <div style="text-align: center;  font-weight: bold; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); margin-bottom: 6px;"  class="tamanho_texto_celular tamanho_texto_desktop alert alert-primary" role="alert">
-
+                <button style="text-align: center;font-size: 15px; font-weight: bold;" class="btn btn-dark " type="Submit" (click)="this.TOTAL()"  > TOTALIZAR</button><BR><BR>
                 {{"LAVAJATO: "}} {{this.TOTALEVENTOSLAVAJATOBEBIDAS1}}{{"   EVENTOS: "}}{{this.TOTALEVENTOSLAVAJATOBEBIDAS2}}{{"   BEBIDAS: "}}{{this.TOTALEVENTOSLAVAJATOBEBIDAS3}}{{"   TOTAL: "}}{{this.TOTALEVENTOSLAVAJATOBEBIDAS1+this.TOTALEVENTOSLAVAJATOBEBIDAS2+this.TOTALEVENTOSLAVAJATOBEBIDAS3}}
                  </div>
 
